@@ -28,7 +28,7 @@ function flatpickr(selector, options) {
 
 function onClose() {
     if (refs.startBtn <= Date.now()) {
-        Notify.failure('Please choose a date in the future');
+        Notiflix.Notify.failure('Please choose a date in the future');
     }
 }
 
@@ -41,7 +41,7 @@ const options = {
         console.log(selectedDates[0]);
     
         if (Date.now() > selectedDates[0]) {
-            Notify.failure('Please choose a date in the future');
+            Notiflix.Notify.failure('Please choose a date in the future');
         }
     }
 };
