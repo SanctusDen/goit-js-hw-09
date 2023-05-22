@@ -15,32 +15,22 @@ let timerId = null;
 let resetDate = null;
 let ms = 0;
 
-class downTimer {
-    constructor({ selector, targetDate }) {
-        this.targetDate = targetDate;
-        this.DaysSpan.document.querySelector(`.value`);
-
-    }
-    
-    update() {
-        setInterval(() => {
-            const currentTime = Date.now();
-            const delta = this.targetDate - currentTimeж
-            const { days, hours, minutes, seconds } = this.convertMs(delta);
-        }, 1000);
-    };
-};
-
-refs.startBtn.addEventListener('click', onBtnStart);
+refs.startBtn.addEventListener('click',onBtnStart);
 refs.startBtn.setAttribute('disabled', true);
 
 function onBtnStart() {
   timerId = setInterval(startTimer, 1000);
 };
 
-// function flatpickr(selector, options) {
-    
-// };
+function flatpickr(selector, options) {
+    Notify.failure('Please choose a date in the future');
+};
+
+function onClose() {
+    if (refs.startBtn <= Date.now()) {
+        Notify.failure('Please choose a date in the future');
+    }
+}
 
 const options = {
     enableTime: true,
@@ -49,7 +39,11 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         console.log(selectedDates[0]);
-    },
+    
+        if (Date.now() > selectedDates[0]) {
+            Notiflix.Notify.failure('Please choose a date in the future');
+        }
+    }
 };
 
 flatpickr(input, options);
