@@ -41,7 +41,7 @@ const options = {
         console.log(selectedDates[0]);
     
         if (Date.now() > selectedDates[0]) {
-            Notiflix.Notify.failure('Please choose a date in the future');
+            Notify.failure('Please choose a date in the future');
         }
     }
 };
