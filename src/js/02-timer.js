@@ -22,15 +22,15 @@ function onBtnStart() {
   timerId = setInterval(startTimer, 1000);
 };
 
-function flatpickr(selector, options) {
-    Notify.failure('Please choose a date in the future');
-};
+// function flatpickr (selector, options) {
+//     Notify.failure('Please choose a date in the future');
+// };
 
 function onClose() {
     if (refs.startBtn <= Date.now()) {
         Notiflix.Notify.failure('Please choose a date in the future');
-    }
-}
+    };
+};
 
 const options = {
     enableTime: true,
