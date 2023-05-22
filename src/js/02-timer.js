@@ -38,9 +38,9 @@ function onBtnStart() {
   timerId = setInterval(startTimer, 1000);
 };
 
-function flatpickr(selector, options) {
+// function flatpickr(selector, options) {
     
-};
+// };
 
 const options = {
     enableTime: true,
