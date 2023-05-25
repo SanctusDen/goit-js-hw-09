@@ -20,12 +20,11 @@ refs.startBtn.setAttribute('disabled', true);
 
 function onStartBtn() {
   timerId = setInterval(startTimer, 1000);
+  refs.startBtn.setAttribute('disabled', true);
+  refs.input.setAttribute('disabled', true);
 };
 
 function startTimer() {
-  refs.startBtn.setAttribute('disabled', true);
-  refs.input.setAttribute('disabled', true);
-
   ms -= 1000;
 
   resetDate = convertMs(ms);
@@ -53,10 +52,6 @@ const options = {
     onClose(selectedDates) {
         console.log(selectedDates[0]);
         onCurrentDate(selectedDates[0]);
-    
-        if (Date.now() > selectedDates[0]) {
-            Notiflix.Notify.failure('Please choose a date in the future');
-        }
     }
 };
 
