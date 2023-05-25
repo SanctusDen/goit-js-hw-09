@@ -20,21 +20,14 @@ refs.startBtn.setAttribute('disabled', true);
 
 function onStartBtn() {
   timerId = setInterval(startTimer, 1000);
-  refs.startBtn.setAttribute('disabled', true);
   refs.input.setAttribute('disabled', true);
+  refs.startBtn.setAttribute('disabled', true);
 };
 
 function startTimer() {
   ms -= 1000;
-
   resetDate = convertMs(ms);
   updateDate(resetDate);
-  
-  if (refs.seconds.textContent <= 0 && refs.minutes.textContent <= 0 && refs.hours.textContent <= 0 && refs.days.textContent <= 0) {
-        Notiflix.Notify.info('Time end');
-        refs.input.removeAttribute('disabled', true);
-        clearInterval(timerId);
-    };
 };
 
 function updateDate(resetDate) {
@@ -66,7 +59,7 @@ function onCurrentDate(selectedDates) {
   ms = selectedDates.getTime() - currentDate;
 
   if (selectedDates < currentDate) {
-     Notiflix.Notify.failure("Please choose a date in the future");
+    Notiflix.Notify.failure("Please choose a date in the future");
   }
   refs.startBtn.removeAttribute('disabled');
 };
