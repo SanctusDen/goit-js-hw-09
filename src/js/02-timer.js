@@ -19,9 +19,9 @@ refs.startBtn.addEventListener('click',onStartBtn);
 refs.startBtn.setAttribute('disabled', true);
 
 function onStartBtn() {
-  timerId = setInterval(startTimer, 1000);
   refs.input.setAttribute('disabled', true);
   refs.startBtn.setAttribute('disabled', true);
+  timerId = setInterval(startTimer, 1000);
 };
 
 function startTimer() {
@@ -59,7 +59,7 @@ function onCurrentDate(selectedDates) {
   ms = selectedDates.getTime() - currentDate;
 
   if (selectedDates < currentDate) {
-    Notiflix.Notify.failure("Please choose a date in the future");
+    return Notiflix.Notify.failure("Please choose a date in the future");
   }
   refs.startBtn.removeAttribute('disabled');
 };
