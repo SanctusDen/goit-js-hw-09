@@ -21,7 +21,12 @@ refs.startBtn.setAttribute('disabled', true);
 function onStartBtn() {
   refs.input.setAttribute('disabled', true);
   refs.startBtn.setAttribute('disabled', true);
-  timerId = setInterval(startTimer, 1000);
+  timerId = setInterval(() => {
+    startTimer();
+    if (ms <= 1000) {
+      clearInterval(timerId);
+    }
+  },1000);
 };
 
 function startTimer() {
@@ -31,21 +36,21 @@ function startTimer() {
 };
 
 function updateDate(resetDate) {
-    refs.days.textContent = resetDate.days;
-    refs.hours.textContent = resetDate.hours;
-    refs.minutes.textContent = resetDate.minutes;
-    refs.seconds.textContent = resetDate.seconds;
+  refs.days.textContent = resetDate.days;
+  refs.hours.textContent = resetDate.hours;
+  refs.minutes.textContent = resetDate.minutes;
+  refs.seconds.textContent = resetDate.seconds;
 };
 
 const options = {
-    enableTime: true,
-    time_24hr: true,
-    defaultDate: new Date(),
-    minuteIncrement: 1,
-    onClose(selectedDates) {
-        console.log(selectedDates[0]);
-        onCurrentDate(selectedDates[0]);
-    }
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+      console.log(selectedDates[0]);
+      onCurrentDate(selectedDates[0]);
+  }
 };
 
 const datePicker = flatpickr(refs.input, options);
